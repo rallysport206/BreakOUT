@@ -1,23 +1,22 @@
 var canvas = document.getElementById('game-canvas');
 // Gets a 2D context for the canvas.
-ctx = canvas.getContext('2d'),
-ballR = 10,
-x = canvas.width / 2,
-y = canvas.height - 30,
-dx = 2,
-dy = -2,
-pongH = 12,
-pongW = 65,
-pongX = (canvas.width - pongW) / 2,
-rightKey = false,
-leftKey = false,
-brickRows = 3,
-brickCol = 9,
-brickW = 38,
-brickH = 20,
-brickPadding = 10,
-brickOffsetTop = 30,
-brickOffsetLeft = 30;
+var ctx = canvas.getContext('2d');
+var x = canvas.width / 2;
+var y = canvas.height - 30;
+var dx = 2;
+var dy = -2;
+var paddleH = 12;
+var paddleW = 65;
+var paddleX = (canvas.width - paddleW) / 2;
+var rightKey = false;
+var leftKey = false;
+var brickRows = 3;
+var brickCol = 9;
+var brickW = 38;
+var brickH = 20;
+var brickPadding = 10;
+var brickOffsetTop = 30;
+var brickOffsetLeft = 30;
 //bricks
 var bricks = [];
 //column
@@ -34,15 +33,15 @@ for(c = 0; c < brickCol; c++){
 //draw the ball
 function drawBall() {
   ctx.beginPath();
-  ctx.arc(x, y, ballR, 0, Math.PI * 2);
+  ctx.arc(x, y, 10, 0, Math.PI * 2);
   ctx.fillStyle = "#8aa52d";
   ctx.fill();
   ctx.closePath();
 }
-//draw the pong
-function drawPong(){
+//draw the paddle
+function drawPaddle(){
   ctx.beginPath();
-  ctx.rect(pongX, canvas.height - pongH, pongW, pongH);
+  ctx.rect(paddleX, canvas.height - paddleH, paddleW, paddleH);
   ctx.fillStyle = "#8aa52d";
   ctx.fill();
   ctx.closePath();
@@ -53,7 +52,7 @@ function drawBricks() {
     if(!brick.status) return;
     ctx.beginPath();
     ctx.rect(brick.x, brick.y, brickW, brickH);
-    ctx.fillstyle = "#8aa52d";
+    ctx.fillStyle = "#8aa52d";
     ctx.fill();
     ctx.closePath();
   });
@@ -71,26 +70,26 @@ function collisionDetection() {
   });
 }
 function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height); //clears the highlighted line
   drawBricks();
   drawBall();
-  drawPong();
+  drawPaddle();
   collisionDetection();
 if(hitSideWall())
   dx = -dx;
-if(hitTop() || hitPong())
+if(hitTop() || hitPaddle())
   dy = -dy;
 if (gameOver())
   document.location.reload();
   var RIGHT_ARROW = 39,
       LEFT_ARROW = 37;
-  function hitPong(){return hitBottom() && ballOverPong()}
-  function ballOverPong(){return x > pongX && x < pongX + pongW}
-  function hitBottom(){return y + dy > canvas.height - ballR}
-  function gameOver(){return hitBottom() && !ballOverPong()}
-  function hitSideWall(){return x + dx > canvas.width - ballR || x + dx < ballR}
-  function hitTop(){return y + dy < ballR}
-  function xOutOfBounds(){return x + dx > canvas.width - ballR || x + dx < ballR}
+  function hitPaddle(){return hitBottom() && ballOverPaddle()}
+  function ballOverPaddle(){return x > paddleX && x < paddleX + paddleW}
+  function hitBottom(){return y + dy > canvas.height - 10}
+  function gameOver(){return hitBottom() && !ballOverPaddle()}
+  function hitSideWall(){return x + dx > canvas.width - 10 || x + dx < 10}
+  function hitTop(){return y + dy < 10}
+  function xOutOfBounds(){return x + dx > canvas.width - 10 || x + dx < 10}
   function rightPressed(e){return e.keyCode == RIGHT_ARROW}
   function leftPressed(e){return e.keyCode == LEFT_ARROW}
   function keyDown(e){
@@ -108,15 +107,15 @@ if (gameOver())
   function mouseMoveHandler(e){
     var relativeX = e.clientX - canvas.brickOffsetLeft;
     if(relativeX > 0 && relativeX < canvas.width){
-      pongX = relativeX - pongW/2;
+      paddleX = relativeX - paddleW/2;
     }
   }
-  var maxX = canvas.width - pongW,
+  var maxX = canvas.width - paddleW,
       minX = 0,
-      pongDelta = rightKey ? 7 : leftKey ? -7 : 0;
-  pongX = pongX + pongDelta;
-  pongX = Math.min(pongX, maxX);
-  pongX = Math.max(pongX, minX);
+      paddleDelta = rightKey ? 7 : leftKey ? -7 : 0;
+  paddleX = paddleX + paddleDelta;
+  paddleX = Math.min(paddleX, maxX);
+  paddleX = Math.max(paddleX, minX);
   x += dx;
   y += dy;
 
