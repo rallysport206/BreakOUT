@@ -3,10 +3,10 @@ var canvas = document.getElementById('game-canvas');
 var ctx = canvas.getContext('2d');
 var x = canvas.width / 2;
 var y = canvas.height - 30;
-var dx = 2;
-var dy = -2;
+var dx = 3;
+var dy = -3;
 var paddleH = 12;
-var paddleW = 65;
+var paddleW = 80;
 var paddleX = (canvas.width - paddleW) / 2;
 var rightKey = false;
 var leftKey = false;
@@ -58,6 +58,11 @@ function drawBricks() {
     ctx.closePath();
   });
 }
+function drawscore(){
+  ctx.font = "16px Arial";
+  ctx.fillStyle = "#8aa52d";
+  ctx.fillText("Score: "+score, 8, 20);
+}
 //collision detection
 function collisionDetection() {
   bricks.forEach(function(b) {
@@ -67,13 +72,12 @@ function collisionDetection() {
     if(inBricksColumn && inBricksRow){
       dy = -dy;
       b.status = 0;
+      score++;
+      if(score == brickCol*brickRows){
+        console.log("You Win!")
+      }
     }
   });
-}
-function score(){
-  ctx.font = "16px";
-  ctx.fillStyle = "#8aa52d";
-  ctx.fillText = ("Score:" +score, 8, 20);
 }
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height); //clears the highlighted line
