@@ -9,6 +9,7 @@ canvas {
   margin: 0 auto;
   display: block;
   background-color: black;
+  font-family: 'Press Start 2P', cursive;
 }
 /*h1{
   text-align: center;
@@ -31,4 +32,8 @@ canvas {
 }
 #bottom{
   width: 480px;
+}
+@font-face {
+  font-family: 'Press Start 2P', cursive;
+  src:url('https://fonts.googleapis.com/css?family=Press+Start+2P');
 }

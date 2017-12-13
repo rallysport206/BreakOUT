@@ -60,9 +60,8 @@ function drawBricks() {
 }
 //scoreboard
 function drawscore(){
-  ctx.font = "16px Arial";
+  ctx.font = "20px Press Start 2P";
   ctx.fillStyle = "#8aa52d";
-  ctx.fill();
   ctx.fillText("Score: "+score, 8, 20);
 }
 //collision detection and bounce off walls
@@ -88,6 +87,7 @@ function draw() {
   drawBricks();
   drawBall();
   drawPaddle();
+  drawscore();
   collisionDetection();
 if(hitSideWall())
   dx = -dx;
@@ -116,7 +116,7 @@ if (gameOver())
     leftKey = leftPressed(e) ? false: leftKey;
   }
   function mouseMoveHandler(e){
-    var relativeX = e.clientX - canvas.offSetLeft;
+    var relativeX = e.clientX - canvas.offsetLeft;
     if(relativeX > 0 && relativeX < canvas.width){
       paddleX = relativeX - paddleW/2;
     }
@@ -124,7 +124,7 @@ if (gameOver())
   //key pressed event
   document.addEventListener('keydown', keyDown, false);
   document.addEventListener('keyup', keyUp, false);
-  document.addEventListener("mouseMove", mouseMoveHandler, false);
+  document.addEventListener("mousemove", mouseMoveHandler, false);
   var maxX = canvas.width - paddleW,
       minX = 0,
       paddleDelta = rightKey ? 7 : leftKey ? -7 : 0;
