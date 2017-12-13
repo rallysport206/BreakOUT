@@ -1,6 +1,7 @@
 body{
   background-image: url('img/background.png');
   background-size: cover;
+  font-family: 'Press Start 2P', cursive;
 }
 canvas {
   border: solid #8aa52d;

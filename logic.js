@@ -17,6 +17,7 @@ var brickH = 20;
 var brickPadding = 10;
 var brickOffsetTop = 30;
 var brickOffsetLeft = 30;
+var score = 0;
 //bricks
 var bricks = [];
 //column
@@ -68,6 +69,11 @@ function collisionDetection() {
       b.status = 0;
     }
   });
+}
+function score(){
+  ctx.font = "16px";
+  ctx.fillStyle = "#8aa52d";
+  ctx.fillText = ("Score:" +score, 8, 20);
 }
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height); //clears the highlighted line
