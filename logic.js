@@ -133,6 +133,5 @@ if (gameOver())
   paddleX = Math.max(paddleX, minX);
   x += dx;
   y += dy;
-
 }
 setInterval(draw, 10);
