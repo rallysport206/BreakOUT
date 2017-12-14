@@ -4,7 +4,7 @@ body{
   font-family: 'Press Start 2P', cursive;
 }
 canvas {
-  border: solid #8aa52d;
+  border: solid #4D658D;
   border-radius: 8px;
   margin: 0 auto;
   display: block;
@@ -23,6 +23,7 @@ canvas {
   background-color: black;
   border-radius: 10px;
   display: block;
+  position: relative;
   margin-left: auto;
   margin-right: auto;
 }

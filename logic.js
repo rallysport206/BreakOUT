@@ -5,9 +5,10 @@ var x = canvas.width / 2;
 var y = canvas.height - 30;
 var dx = 3;
 var dy = -3; //making ball appear to be moving
-var paddleH = 12; //paddle height
+var paddleH = 30; //paddle height
 var paddleW = 80; //paddle width
 var paddleX = (canvas.width - paddleW) / 2;
+var mario = new Image();
 var rightKey = false;
 var leftKey = false;
 var brickRows = 3; //brick rows
@@ -35,17 +36,19 @@ for(c = 0; c < brickCol; c++){
 function drawBall() {
   ctx.beginPath();
   ctx.arc(x, y, 10, 0, Math.PI * 2); //arc loop
-  ctx.fillStyle = "#8aa52d";
+  ctx.fillStyle = "white";
   ctx.fill();
   ctx.closePath();
 }
 //draw the paddle
+mario.src = 'img/mario.png';
 function drawPaddle(){
   ctx.beginPath();
-  ctx.rect(paddleX, canvas.height - paddleH, paddleW, paddleH); //paddle
-  ctx.fillStyle = "#8aa52d";
-  ctx.fill();
-  ctx.closePath();
+  // ctx.rect(paddleX, canvas.height - paddleH, paddleW, paddleH); //paddle
+  ctx.drawImage(mario, paddleX, canvas.height - paddleH, paddleW, paddleH);
+  // ctx.fillStyle = "#8aa52d";
+  // ctx.fill();
+  // ctx.closePath();
 }
 //draws the bricks
 function drawBricks() {
@@ -53,13 +56,13 @@ function drawBricks() {
     if(!brick.status) return;
     ctx.beginPath();
     ctx.rect(brick.x, brick.y, brickW, brickH);
-    ctx.fillStyle = "#8aa52d";
+    ctx.fillStyle = "#4D658D";
     ctx.fill();
     ctx.closePath();
   });
 }
 //scoreboard
-function drawscore(){
+function drawScore(){
   ctx.font = "20px Press Start 2P";
   ctx.fillStyle = "#8aa52d";
   ctx.fillText("Score: "+score, 8, 20);
@@ -77,7 +80,7 @@ function collisionDetection() {
       if(score == brickCol*brickRows){
         ctx.font = "20px Arial";
         ctx.fillStyle = "#8aa52d";
-        ctx.fillText("You Broke Out!", 10, 50);
+        ctx.fillText("You Broke Out!", 8, 50);
       }
     }
   });
@@ -87,7 +90,7 @@ function draw() {
   drawBricks();
   drawBall();
   drawPaddle();
-  drawscore();
+  drawScore();
   collisionDetection();
 if(hitSideWall())
   dx = -dx;
