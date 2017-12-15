@@ -81,6 +81,7 @@ function collisionDetection() {
         ctx.font = "20px Arial";
         ctx.fillStyle = "#8aa52d";
         ctx.fillText("You Broke Out!", 8, 50);
+        document.location.reload();
       }
     }
   });
