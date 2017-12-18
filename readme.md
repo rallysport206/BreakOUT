@@ -28,7 +28,9 @@ Layer of bricks line up on the top of the screen. A ball travels across the scre
 
 * I've been trying to figure out how to have the game pause on start up so that I could have a start menu and an action on click to start the game.
 
-### Other Features to Add
+* The ball doesn't recognize the edge of the Mario image to bounce off.
+
+## Other Features to Add
 
 * A Pause function
 * Generate random brick colors
