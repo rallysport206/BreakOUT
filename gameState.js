@@ -1,10 +1,6 @@
 var canvas = document.getElementById('game-canvas');
 // Gets a 2D context for the canvas.
 var ctx = canvas.getContext('2d'); //rendering context in 2d
-// $('#startButton').click(function () {
-//   $('#splashScreen').hide();
-//   $('#game-canvas').show();
-// });
 var startGame = false;
 var completed = false;
 var paused = 35;
