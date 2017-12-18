@@ -33,7 +33,7 @@ draw();
 if(!paused)
 {
   update();
-}
+} 
 // make draw ball to start on with function to start game
 
 // function start(){

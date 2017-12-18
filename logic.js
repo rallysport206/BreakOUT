@@ -80,7 +80,7 @@ function collisionDetection() {
         document.getElementById('win').innerHTML = 'You Broke Out!';
         // remove.requestAnimationFrame()
       }
-    }
+    } 
   });
 }
 function draw() {
