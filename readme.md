@@ -2,6 +2,10 @@
 
 A Clone of the classic arcade game developed and published by Atari. It was influenced by another Atari arcade classic Pong. Breakout was built by Steven Wozniak and aided by Steve Jobs. It was conceptualized by Nolan Bushnell and Steve Bristow.
 
+## How to play
+
+Layer of bricks line up on the top of the screen. A ball travels across the screen, bouncing off the top and side walls of the screen. When the brick is hit, the ball will bounce away and the brick is destroyed. The player must keep the ball from passing to the bottom of the screen using the paddle (or Mario in this case) to bounce the ball back upwards.
+
 ## Technologies Used
 
 * HTML
@@ -20,7 +24,7 @@ A Clone of the classic arcade game developed and published by Atari. It was infl
 
 * Learning CANVAS and implementing into CANVAS
 
-## Unsloved Problems
+## Unsolved Problems
 
 * I've been trying to figure out how to have the game pause on start up so that I could have a start menu and an action on click to start the game.
 
