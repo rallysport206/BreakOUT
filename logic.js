@@ -78,7 +78,7 @@ function collisionDetection() {
       score++;
       if(score === brickCol*brickRows){
         document.getElementById('win').innerHTML = 'You Broke Out!';
-        remove.requestAnimationFrame()
+        // remove.requestAnimationFrame()
       }
     }
   });
@@ -134,7 +134,7 @@ if (gameOver())
   paddleX = Math.max(paddleX, minX);
   x += dx; // ball is painted in new postion every update
   y += dy;
-  requestAnimationFrame(draw);
+  // requestAnimationFrame(draw);
 }
 setInterval(draw, 10);
-draw();
+// draw();
