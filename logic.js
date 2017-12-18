@@ -1,14 +1,13 @@
-var canvas = document.getElementById('game-canvas');
-// Gets a 2D context for the canvas.
-var ctx = canvas.getContext('2d'); //rendering context in 2d
+var canvas = document.getElementById('game-canvas')// Gets a 2D context for the canvas.
+var ctx = canvas.getContext('2d'); //creating ctx to store 2d rendering context.
 var x = canvas.width / 2;
 var y = canvas.height - 30;
-var dx = 3;
-var dy = -3; //making ball appear to be moving
+var dx = 4; // draws on x
+var dy = -4; //draws on y
 var paddleH = 30; //paddle height
 var paddleW = 80; //paddle width
-var paddleX = (canvas.width - paddleW) / 2;
-var mario = new Image();
+var paddleX = (canvas.width - paddleW) / 3;
+var mario = new Image();//add mario image
 var rightKey = false;
 var leftKey = false;
 var brickRows = 3; //brick rows
@@ -34,8 +33,8 @@ for(c = 0; c < brickCol; c++){
 }
 //draw the ball
 function drawBall() {
-  ctx.beginPath();
-  ctx.arc(x, y, 10, 0, Math.PI * 2); //arc loop
+  ctx.beginPath(); //
+  ctx.arc(x, y, 10, 0, Math.PI * 2); //arc loop to 'draw ball' w/ start angle and end angle or angle to start and finish drawing circle in radians.
   ctx.fillStyle = "white";
   ctx.fill();
   ctx.closePath();
@@ -48,14 +47,14 @@ function drawPaddle(){
   ctx.drawImage(mario, paddleX, canvas.height - paddleH, paddleW, paddleH);
   // ctx.fillStyle = "#8aa52d";
   // ctx.fill();
-  // ctx.closePath();
+  ctx.closePath();
 }
 //draws the bricks
 function drawBricks() {
   bricks.forEach(function(brick){
     if(!brick.status) return;
     ctx.beginPath();
-    ctx.rect(brick.x, brick.y, brickW, brickH);
+    ctx.rect(brick.x, brick.y, brickW, brickH); //defining a a rectangle.
     ctx.fillStyle = "#4D658D";
     ctx.fill();
     ctx.closePath();
@@ -64,7 +63,7 @@ function drawBricks() {
 //scoreboard
 function drawScore(){
   ctx.font = "20px Press Start 2P";
-  ctx.fillStyle = "#8aa52d";
+  ctx.fillStyle = "#4D658D";
   ctx.fillText("Score: "+score, 8, 20);
 }
 //collision detection and bounce off walls
@@ -77,11 +76,9 @@ function collisionDetection() {
       dy = -dy;
       b.status = 0;
       score++;
-      if(score == brickCol*brickRows){
-        ctx.font = "20px Arial";
-        ctx.fillStyle = "#8aa52d";
-        ctx.fillText("You Broke Out!", 8, 50);
-        document.location.reload();
+      if(score === brickCol*brickRows){
+        document.getElementById('win').innerHTML = 'You Broke Out!';
+        remove.requestAnimationFrame()
       }
     }
   });
@@ -135,7 +132,9 @@ if (gameOver())
   paddleX = paddleX + paddleDelta;
   paddleX = Math.min(paddleX, maxX);
   paddleX = Math.max(paddleX, minX);
-  x += dx;
+  x += dx; // ball is painted in new postion every update
   y += dy;
+  requestAnimationFrame(draw);
 }
 setInterval(draw, 10);
+draw();

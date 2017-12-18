@@ -1,7 +1,8 @@
 body{
-  background-image: url('img/background.png');
-  background-size: cover;
+  background-image: url('img/arcade.jpg');
+  background-repeat: no-repeat;
   font-family: 'Press Start 2P', cursive;
+  margin-top: 50px;
 }
 canvas {
   border: solid #4D658D;
@@ -16,10 +17,14 @@ canvas {
   font-family: 'Press Start 2P', cursive;
   color: #8aa52d;
 }*/
+p{
+  color: #FF9933;
+  font-size: 12px;
+}
 .container{
   text-align: center;
   width: 500px;
-  height: 700px;
+  height: 750px;
   background-color: black;
   border-radius: 10px;
   display: block;
@@ -32,5 +37,5 @@ canvas {
   width: 480px;
 }
 #bottom{
-  width: 480px;
+  width: 495px;
 }

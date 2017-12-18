@@ -7,6 +7,7 @@ var ctx = canvas.getContext('2d'); //rendering context in 2d
 // });
 var startGame = false;
 var completed = false;
+var paused = 35;
 intro();
 function intro() {
   ctx.font = '50px Impact';
@@ -19,14 +20,16 @@ function intro() {
 function togglePause()
 {
   if(!paused){
+    paused = false;
+  } else if (paused) {
     paused = true;
-  } else if (pause) {
-    pause = false;
   }
 }
-windowl.addEventListener('keydown',function(e){
-  var key = e.keyCode;{
-  if(key === 80)
+window.addEventListener('keydown',function(e){
+  var key = e.keyCode;
+  if (e.keyCode == paused);
+  // if(key === 80) //p key for pause
+  {
     togglePause();
   }
 });
@@ -35,6 +38,8 @@ if(!paused)
 {
   update();
 }
+// make draw ball to start on with function to start game
+
 // function start(){
 //   startGame = true;
 //   clearCanvas();
