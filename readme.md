@@ -37,4 +37,4 @@ Layer of bricks line up on the top of the screen. A ball travels across the scre
 * Add 'coins'
 * Click on service button to start game
 * Multiple levels
-* Random power ups from bricks to power up paddle
+* Random power ups from bricks to power up paddle 

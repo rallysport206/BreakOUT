@@ -65,7 +65,7 @@ function drawScore(){
   ctx.font = "20px Press Start 2P";
   ctx.fillStyle = "#4D658D";
   ctx.fillText("Score: "+score, 8, 20);
-}
+} 
 //collision detection and bounce off walls
 function collisionDetection() {
   bricks.forEach(function(b) {
@@ -80,7 +80,7 @@ function collisionDetection() {
         document.getElementById('win').innerHTML = 'You Broke Out!';
         // remove.requestAnimationFrame()
       }
-    } 
+    }
   });
 }
 function draw() {

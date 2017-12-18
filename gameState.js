@@ -27,13 +27,13 @@ window.addEventListener('keydown',function(e){
   // if(key === 80) //p key for pause
   {
     togglePause();
-  }
+  } 
 });
 draw();
 if(!paused)
 {
   update();
-} 
+}
 // make draw ball to start on with function to start game
 
 // function start(){
