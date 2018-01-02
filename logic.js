@@ -65,7 +65,7 @@ function drawScore(){
   ctx.font = "20px Press Start 2P";
   ctx.fillStyle = "#4D658D";
   ctx.fillText("Score: "+score, 8, 20);
-} 
+}
 //collision detection and bounce off walls
 function collisionDetection() {
   bricks.forEach(function(b) {
@@ -77,8 +77,12 @@ function collisionDetection() {
       b.status = 0;
       score++;
       if(score === brickCol*brickRows){
-        document.getElementById('win').innerHTML = 'You Broke Out!';
-        // remove.requestAnimationFrame()
+        document.getElementById('status').innerHTML = 'You Broke Out!';
+        remove.requestAnimationFrame()
+      // else if(score === 5){
+      //     document.getElementById('status').innerHTML = 'Game Over!';
+      //     remove.requestAnimationFrame()
+      //   }
       }
     }
   });
@@ -95,13 +99,16 @@ if(hitSideWall())
 if(hitTop() || hitPaddle())
   dy = -dy;
 if (gameOver())
+  // document.getElementById('status').innerHTML = 'Game Over!';
+  // remove.requestAnimationFrame()
+  // alert("Game Over")
   document.location.reload();
   var RIGHT_ARROW = 39,
       LEFT_ARROW = 37;
   function hitPaddle(){return hitBottom() && ballOverPaddle()}
   function ballOverPaddle(){return x > paddleX && x < paddleX + paddleW}
   function hitBottom(){return y + dy > canvas.height - 10}
-  function gameOver(){return hitBottom() && !ballOverPaddle()}
+  function gameOver(){return hitBottom() && !ballOverPaddle() && alert("Game Over")}
   function hitSideWall(){return x + dx > canvas.width - 10 || x + dx < 10}
   function hitTop(){return y + dy < 10}
   function xOutOfBounds(){return x + dx > canvas.width - 10 || x + dx < 10}
@@ -134,7 +141,7 @@ if (gameOver())
   paddleX = Math.max(paddleX, minX);
   x += dx; // ball is painted in new postion every update
   y += dy;
-  // requestAnimationFrame(draw);
+  requestAnimationFrame(draw);
 }
-setInterval(draw, 10);
-// draw();
+// setInterval(draw, 10);
+draw();
