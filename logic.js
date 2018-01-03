@@ -108,7 +108,8 @@ if (gameOver())
   function hitPaddle(){return hitBottom() && ballOverPaddle()}
   function ballOverPaddle(){return x > paddleX && x < paddleX + paddleW}
   function hitBottom(){return y + dy > canvas.height - 10}
-  function gameOver(){return hitBottom() && !ballOverPaddle() && alert("Game Over")}
+  function gameOver(){
+    return hitBottom() && !ballOverPaddle() && restartGame()}
   function hitSideWall(){return x + dx > canvas.width - 10 || x + dx < 10}
   function hitTop(){return y + dy < 10}
   function xOutOfBounds(){return x + dx > canvas.width - 10 || x + dx < 10}
@@ -127,6 +128,11 @@ if (gameOver())
     var relativeX = e.clientX - canvas.offsetLeft;
     if(relativeX > 0 && relativeX < canvas.width){
       paddleX = relativeX - paddleW/2;
+    }
+  }
+  function restartGame() {
+    if (window.confirm('Game Over, Click OK to Restart')){
+      return window.location.reload()
     }
   }
   //key pressed event
