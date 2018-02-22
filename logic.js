@@ -43,10 +43,7 @@ function drawBall() {
 mario.src = 'img/mario.png';
 function drawPaddle(){
   ctx.beginPath();
-  // ctx.rect(paddleX, canvas.height - paddleH, paddleW, paddleH); //paddle
   ctx.drawImage(mario, paddleX, canvas.height - paddleH, paddleW, paddleH);
-  // ctx.fillStyle = "#8aa52d";
-  // ctx.fill();
   ctx.closePath();
 }
 //draws the bricks
@@ -79,10 +76,6 @@ function collisionDetection() {
       if(score === brickCol*brickRows){
         document.getElementById('status').innerHTML = 'You Broke Out!';
         remove.requestAnimationFrame()
-      // else if(score === 5){
-      //     document.getElementById('status').innerHTML = 'Game Over!';
-      //     remove.requestAnimationFrame()
-      //   }
       }
     }
   });
@@ -99,9 +92,6 @@ if(hitSideWall())
 if(hitTop() || hitPaddle())
   dy = -dy;
 if (gameOver())
-  // document.getElementById('status').innerHTML = 'Game Over!';
-  // remove.requestAnimationFrame()
-  // alert("Game Over")
   document.location.reload();
   var RIGHT_ARROW = 39,
       LEFT_ARROW = 37;
@@ -149,5 +139,4 @@ if (gameOver())
   y += dy;
   requestAnimationFrame(draw);
 }
-// setInterval(draw, 10);
 draw();
