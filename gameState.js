@@ -27,26 +27,10 @@ window.addEventListener('keydown',function(e){
   // if(key === 80) //p key for pause
   {
     togglePause();
-  } 
+  }
 });
 draw();
 if(!paused)
 {
   update();
 }
-// make draw ball to start on with function to start game
-
-// function start(){
-//   startGame = true;
-//   clearCanvas();
-//   setInterval(function() {
-//     clearCanvas();
-//     loop();
-//   }, 1000/30)
-// }
-// function loop() {
-//   console.log('game is running');
-// }
-// function clearCanvas() {
-//   context.clearRect(0, 0, 640, 360);
-// }
